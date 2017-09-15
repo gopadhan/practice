@@ -54,12 +54,13 @@ function calculateMousePos(evt) {
 }
 
 function handleMouseClick(evt) {
-    resetGame();
+    checkForClickedObj(calculateMousePos(evt));
 }
 
 function handleMouseMove(evt) {
     var mousePos = calculateMousePos(evt);
     currentMousePosX = mousePos.x;
     currentMousePosY = mousePos.y;
-    console.log(currentMousePosX, currentMousePosY);
+
+    //console.log("x: ", currentMousePosX, "y: ", currentMousePosY);
 }

@@ -7,9 +7,10 @@ var obj2 = document.createElement("img");
 var obj3 = document.createElement("img");
 var obj4 = document.createElement("img");
 var threadDelta = 10;
-var obj1x, obj1y, obj2x, obj2y, obj3x, obj3y, obj4x, obj4y;
-var currentMousePosY = 0;
-var currentMousePosX  =0;
+var obj1x=200, obj1y=800, obj2x=500, obj2y=800, obj3x=800, obj3y=800, obj4x, obj4y;
+var currentMousePosY = 100;
+var currentMousePosX  =100;
+var speed = 1;
 
 window.onload = function(){
 	gameCanvas = document.getElementById("gameCanvas");
@@ -26,6 +27,7 @@ window.onload = function(){
 
 function gameInit(){
 	initInput();
+
 	initLoad();
 
 }
@@ -37,16 +39,16 @@ function initLoad(){
 
 function redraw(){
 	gameContext.drawImage(background, 0, 275, background.width-10, background.height, 0, 0, gameCanvas.width, gameCanvas.height+500);
-	drawPic(obj1, 200,200,0);
-	drawPic(obj2, 500,200,0);
-	drawPic(obj3, 800,200,0);
+	drawPic(obj1, obj1x,obj1y,0);
+	drawPic(obj2, obj2x,obj2y,0);
+	drawPic(obj3, obj3x,obj3y,0);
 	//drawPic(obj4, 1100,200,0);
 	//colorRect(200-obj1.width/2, 200-obj1.height/2, obj1.width, obj1.height);	
 	//colorString(200,310,'red');
 	checkAndHighlightObj1();
 	checkAndHighlightObj2();
 	colorTextSmall("Select the Number 1", 10,40,'white');
-	colorTextBig("1", 200, 200, 'white');
+	colorTextBig("1", obj1x, obj1y, 'white');
 
 
 }
@@ -57,8 +59,13 @@ function recalculate(){
 		threadMultiplier = 1;
 
 	threadDelta += 1 * threadMultiplier;
+
+	obj1y -= speed;
+	obj2y -= speed;
+	obj3y -= speed;
 	//console.log(threadDelta);
 }
+
 function startGame(){
 	var fps = 30;
 	setInterval(function(){
@@ -156,4 +163,8 @@ function checkAndHighlightObj2(){
 			obj2.src = "images/Balloons_01_256x256_Alt_04_007.png";
 		}
 		
+}
+
+function checkForClickedObj(pos){
+
 }
