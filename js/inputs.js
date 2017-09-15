@@ -43,7 +43,7 @@ function keyReleased(evt){
 }
 
 function calculateMousePos(evt) {
-    var rect = canvas.getBoundingClientRect(), root = document.documentElement;
+    var rect = gameCanvas.getBoundingClientRect(), root = document.documentElement;
 
     var mouseX = evt.clientX - rect.left - root.scrollLeft;
     var mouseY = evt.clientY - rect.top - root.scrollTop;
@@ -61,4 +61,5 @@ function handleMouseMove(evt) {
     var mousePos = calculateMousePos(evt);
     currentMousePosX = mousePos.x;
     currentMousePosY = mousePos.y;
+    console.log(currentMousePosX, currentMousePosY);
 }
